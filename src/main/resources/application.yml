@@ -1,0 +1,36 @@
+logging:
+  level:
+    web: debug
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp//localhost/./security
+    username: sa
+  jpa:
+    database: h2
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  security:
+    oauth2:
+      client:
+        registration:
+          twitch:
+            provider: twitch
+            client-name: Twitch
+            client-id: rq3wv7y89kuh0z1u8bcouej3hi7iw3
+            client-secret: 64s3dbvzt7yoznley7tmnqo9eo7tmb
+            scope: user:read:follows
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/twitch
+        provider:
+          twitch:
+            authorization-uri: https://id.twitch.tv/oauth2/authorize?response_type=code
+            token-uri: https://id.twitch.tv/oauth2/token
+            user-info-uri: https://id.twitch.tv/oauth2/userinfo
+            user-info-authentication-method: POST
+            jwk-set-uri: https://id.twitch.tv/oauth2/keys
+            user_name_attribute: sub
