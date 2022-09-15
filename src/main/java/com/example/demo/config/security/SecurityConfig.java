@@ -1,6 +1,5 @@
 package com.example.demo.config.security;
 
-import com.example.demo.config.OAuth2FailureHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
